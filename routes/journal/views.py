@@ -40,10 +40,13 @@ def get_journals(uid):
     args = request.args
     start_date, end_date = args.get('start_date'), args.get('end_date')
 
-    start_date = datetime(2023, 9, 10)
-    end_date = datetime(2023, 9, 16)
+    date_format = "%Y-%m-%d"
 
-    res = Journal.query.filter(Journal.date.between(start_date, end_date)).all()
+    # Use datetime.strptime() to parse the string into a datetime object
+    start_date = datetime.strptime(start_date, date_format)
+    end_date = datetime.strptime(end_date, date_format)
+
+    res = Journal.query.filter_by(uid=uid).filter(Journal.date.between(start_date, end_date)).all()
     
     return jsonify(res)
 
@@ -73,10 +76,13 @@ def get_mood(uid):
     args = request.args
     start_date, end_date = args.get('start_date'), args.get('end_date')
 
-    start_date = datetime(2023, 9, 10)
-    end_date = datetime(2023, 9, 16)
+    date_format = "%Y-%m-%d"
 
-    res = Mood.query.filter(Mood.date.between(start_date, end_date)).all()
+    # Use datetime.strptime() to parse the string into a datetime object
+    start_date = datetime.strptime(start_date, date_format)
+    end_date = datetime.strptime(end_date, date_format)
+
+    res = Mood.query.filter_by(uid=uid).filter(Mood.date.between(start_date, end_date)).all()
     
     return jsonify(res)
 

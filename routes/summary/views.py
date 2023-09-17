@@ -18,10 +18,13 @@ def get_summary(uid):
     args = request.args
     start_date, end_date = args.get('start_date'), args.get('end_date')
 
-    start_date = datetime(2023, 9, 10)
-    end_date = datetime(2023, 9, 16)
+    date_format = "%Y-%m-%d"
 
-    res = Mood.query.filter(Mood.date.between(start_date, end_date)).all()
+    # Use datetime.strptime() to parse the string into a datetime object
+    start_date = datetime.strptime(start_date, date_format)
+    end_date = datetime.strptime(end_date, date_format)
+
+    res = Mood.query.filter_by(uid=uid).filter(Mood.date.between(start_date, end_date)).all()
     # extract relevant values
     res = [(mood.date, mood.is_day, mood.score) for mood in res]
     res = generate_summary(res)
