@@ -16,5 +16,5 @@ Our app is a journalling app that has the user enter 2 journal entries a day. On
 
 ### Other links:
 - [Figma](https://www.figma.com/proto/5hnPokrci4UtlAkOJWrS6f/budEjournal?page-id=0%3A1&type=d[…]rting-point-node-id=29%3A1906&show-proto-sidebar=1&mode=design)
-- [Front-end](https://github.com/BaileyLuu/budejournal/tree/main)
+- [Front-end](https://github.com/BaileyLuu/budejournal)
 - [Devpost](https://devpost.com/software/budejournal)
